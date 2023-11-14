@@ -2,14 +2,14 @@ import 'package:eduhub_mobile/screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
@@ -24,9 +24,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void dispose() {
-    _emailController.clear();
-    _passwordController.clear();
+    _emailController.dispose();
+    _passwordController.dispose();
     super.dispose();
+  }
+
+  bool _isValidEmail(String email) {
+    // Simple email format validation
+    return RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(email);
   }
 
   @override
@@ -38,7 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
         centerTitle: true,
       ),
       body: 
-    // FutureBuilder(future: await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform), builder: (context, snapshot){
+    //   FutureBuilder(future: await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform), builder: (context, snapshot){
     //   switch(snapshot.connectionState){
     //     case ConnectionState.done:
     //     return Container(); //Add the widgets from here
@@ -46,6 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
     //   }
     // });
       GestureDetector(
+        // Allows you to tap anywhere to release the keyboard from the screen
         onTap: () {
           FocusScope.of(context).unfocus();
         },
@@ -69,14 +75,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   const Text(
-                    'Login',
+                    'Sign Up',
                     style: TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   const SizedBox(height: 10),
-                  const Text('Login to continue using the app'),
+                  const Text('Sign Up to use the app'),
                   const SizedBox(height: 20),
                   const Text(
                     'Email',
@@ -198,47 +204,49 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     onPressed: () async {
-                      var emailAddress = _emailController.toString();
-                      var password = _passwordController.toString();
+                      String emailAddress = _emailController.toString();
+                      String password = _passwordController.toString();
 
                       if (_formKey.currentState!.validate()) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
-                            content: Text('Logging you in...'),
+                            content: Text('Signing you up...'),
+                            // duration: Duration(milliseconds: 3000),
                           ),
                         );
-                        // TODO: Add firebase to sign in user
                         // try {
-                        //   await FirebaseAuth.instance
-                        //       .signInWithEmailAndPassword(
-                        //     email: emailAddress,
-                        //     password: password,
-                        //   );
+                        // Check email format before communicating to backend
+                        // if (_isValidEmail(emailAddress)) {
+                        //     await FirebaseAuth.instance
+                        //         .createUserWithEmailAndPassword(
+                        //       email: emailAddress,
+                        //       password: password,
+                        //     );
 
-                        //   // ignore: use_build_context_synchronously
+                        // ignore: use_build_context_synchronously
                         //   Navigator.pushReplacement(
                         //     context,
                         //     MaterialPageRoute(
                         //       builder: ((context) => OnBoarding(
-                        //             welcomeMessage: 'logged in',
+                        //             welcomeMessage: 'signed up',
                         //           )),
                         //     ),
                         //   );
-
-                        //   _emailController.clear();
-                        //   _passwordController.clear();
+                        // } else {
+                        //   print('Enter correct format of email');
+                        // }
                         // } on FirebaseAuthException catch (e) {
-                        //   if (e.code == 'user-not-found') {
-                        //     print('No user found with that email');
-                        //   } else if (e.code == 'wrong-password') {
-                        //     print('Wrong password provided for that user');
+                        //   if (e.code == 'weak-password') {
+                        //     print('Password provided was too weak');
+                        //   } else if (e.code == 'email-already-in-use') {
+                        //     print('The account already exists for that email');
                         //   }
                         // } catch (e) {
                         //   print(e);
                         // }
                       }
                     },
-                    child: const Text('Login'),
+                    child: const Text('Create Account'),
                   ),
                 ],
               ),

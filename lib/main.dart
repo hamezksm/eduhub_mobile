@@ -1,8 +1,17 @@
-import 'package:eduhub_mobile/screens/login_screen.dart';
+// import 'package:eduhub_mobile/screens/login_screen.dart';
+import 'package:eduhub_mobile/screens/signup_screen.dart';
 import 'package:flutter/material.dart';
+// import 'package:firebase_core/firebase_core.dart';
+// import 'firebase_options.dart';
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(
+    const MaterialApp(
+      title: 'Flutter Demo',
+      home: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -16,7 +25,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: const LoginScreen(),
+      home: const SignUpScreen(),
     );
   }
 }
