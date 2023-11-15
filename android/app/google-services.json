@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "695176108151",
+    "project_id": "authentication-be428",
+    "storage_bucket": "authentication-be428.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:695176108151:android:faec471c8eadc4aff00e72",
+        "android_client_info": {
+          "package_name": "com.example.eduhub_mobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1reC7lS54c2Aii_jJ7kZv4cWSCuGw0XY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

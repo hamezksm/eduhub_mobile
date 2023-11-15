@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors_in_immutables
 
+import 'package:eduhub_mobile/screens/login_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class OnBoarding extends StatefulWidget {
@@ -11,6 +13,17 @@ class OnBoarding extends StatefulWidget {
 }
 
 class _OnBoardingState extends State<OnBoarding> {
+  Future<void> signOut() async {
+    await FirebaseAuth.instance.signOut().then(
+          (value) => Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(
+              builder: (context) => const LoginScreen(),
+            ),
+            (route) => false,
+          ),
+        );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,6 +33,14 @@ class _OnBoardingState extends State<OnBoarding> {
       ),
       body: Center(
         child: Text('Welcome, you are ${widget.welcomeMessage}'),
+      ),
+      drawer: Drawer(
+        child: Center(
+          child: IconButton(
+            onPressed: signOut,
+            icon: const Icon(Icons.logout),
+          ),
+        ),
       ),
     );
   }

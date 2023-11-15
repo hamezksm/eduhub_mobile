@@ -1,4 +1,4 @@
-import 'package:eduhub_mobile/screens/onboarding_screen.dart';
+// import 'package:eduhub_mobile/screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 
@@ -29,6 +29,8 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,15 +39,15 @@ class _LoginScreenState extends State<LoginScreen> {
         // title: const Text('Login'),
         centerTitle: true,
       ),
-      body: 
-    // FutureBuilder(future: await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform), builder: (context, snapshot){
-    //   switch(snapshot.connectionState){
-    //     case ConnectionState.done:
-    //     return Container(); //Add the widgets from here
-    //     default: return const CircularProgressIndicator();
-    //   }
-    // });
-      GestureDetector(
+      body:
+          // FutureBuilder(future: await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform), builder: (context, snapshot){
+          //   switch(snapshot.connectionState){
+          //     case ConnectionState.done:
+          //     return Container(); //Add the widgets from here
+          //     default: return const CircularProgressIndicator();
+          //   }
+          // });
+          GestureDetector(
         onTap: () {
           FocusScope.of(context).unfocus();
         },
@@ -246,6 +248,7 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         ),
       ),
+      
     );
   }
 }
