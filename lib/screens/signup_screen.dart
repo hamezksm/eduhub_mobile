@@ -216,8 +216,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               ),
                             ),
                             onPressed: () async {
-                              String emailAddress = _emailController.toString();
-                              String password = _passwordController.toString();
+                              String emailAddress =
+                                  _emailController.text.trim();
+                              String password = _passwordController.text;
+                              print(password);
 
                               if (_formKey.currentState!.validate()) {
                                 ScaffoldMessenger.of(context).showSnackBar(
@@ -233,7 +235,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     email: emailAddress,
                                     password: password,
                                   );
-
                                   nextPage();
                                   // } else {
                                   //   print('Enter correct format of email');

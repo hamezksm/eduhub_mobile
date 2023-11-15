@@ -199,8 +199,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                               ),
                               onPressed: () async {
-                                var emailAddress = _emailController.toString();
-                                var password = _passwordController.toString();
+                                var emailAddress = _emailController.text.trim();
+                                var password = _passwordController.text;
 
                                 if (_formKey.currentState!.validate()) {
                                   ScaffoldMessenger.of(context).showSnackBar(
@@ -208,7 +208,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       content: Text('Logging you in...'),
                                     ),
                                   );
-                                  
+
                                   try {
                                     await FirebaseAuth.instance
                                         .signInWithEmailAndPassword(
@@ -232,7 +232,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                     if (e.code == 'user-not-found') {
                                       print('No user found with that email');
                                     } else if (e.code == 'wrong-password') {
-                                      print('Wrong password provided for that user');
+                                      print(
+                                          'Wrong password provided for that user');
                                     }
                                   } catch (e) {
                                     print(e);
