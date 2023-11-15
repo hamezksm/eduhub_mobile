@@ -17,15 +17,24 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -43,39 +52,11 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDs5SaUr2WNxVoyw73mbXsEJvafed2zzvU',
-    appId: '1:695176108151:web:7498ca453ad298d5f00e72',
-    messagingSenderId: '695176108151',
-    projectId: 'authentication-be428',
-    authDomain: 'authentication-be428.firebaseapp.com',
-    storageBucket: 'authentication-be428.appspot.com',
-    measurementId: 'G-MX0RK83QM6',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyC1reC7lS54c2Aii_jJ7kZv4cWSCuGw0XY',
     appId: '1:695176108151:android:faec471c8eadc4aff00e72',
     messagingSenderId: '695176108151',
     projectId: 'authentication-be428',
     storageBucket: 'authentication-be428.appspot.com',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyA9e60uqdILrB7PJi5gStSuNpmLWKX4E5o',
-    appId: '1:695176108151:ios:1c0f10802af0ab0ff00e72',
-    messagingSenderId: '695176108151',
-    projectId: 'authentication-be428',
-    storageBucket: 'authentication-be428.appspot.com',
-    iosBundleId: 'com.example.eduhubMobile',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyA9e60uqdILrB7PJi5gStSuNpmLWKX4E5o',
-    appId: '1:695176108151:ios:e79dc4fb53ccc3dbf00e72',
-    messagingSenderId: '695176108151',
-    projectId: 'authentication-be428',
-    storageBucket: 'authentication-be428.appspot.com',
-    iosBundleId: 'com.example.eduhubMobile.RunnerTests',
   );
 }
