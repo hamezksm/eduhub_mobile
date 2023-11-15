@@ -35,10 +35,29 @@ class _OnBoardingState extends State<OnBoarding> {
         child: Text('Welcome, you are ${widget.welcomeMessage}'),
       ),
       drawer: Drawer(
-        child: Center(
-          child: IconButton(
-            onPressed: signOut,
-            icon: const Icon(Icons.logout),
+        child: GestureDetector(
+          onTap: signOut,
+          child: Center(
+            child: Container(
+              height: 50.0,
+              decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.black,
+                  ),
+                  borderRadius: BorderRadius.circular(8.0)),
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Sign Out',
+                    style: TextStyle(fontSize: 20.0),
+                  ),
+                  Icon(
+                    Icons.logout,
+                  ),
+                ],
+              ),
+            ),
           ),
         ),
       ),

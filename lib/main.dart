@@ -1,8 +1,6 @@
-// import 'package:eduhub_mobile/screens/login_screen.dart';
+import 'package:eduhub_mobile/screens/login_screen.dart';
 import 'package:eduhub_mobile/screens/signup_screen.dart';
 import 'package:flutter/material.dart';
-// import 'package:firebase_core/firebase_core.dart';
-// import 'firebase_options.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: const SignUpScreen(),
+      home: const LoginScreen(),
     );
   }
 }
